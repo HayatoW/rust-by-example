@@ -1,7 +1,8 @@
 use std::fmt::Display;
 
 fn transpose(m: Matrix) -> Matrix {
-    let (m0, m1, m2, m3) = (m.0, m.1, m.2, m.3);
+    // こう書ける
+    let Matrix(m0, m1, m2, m3) = m;
 
     Matrix(m0, m2, m1, m3)
 }
