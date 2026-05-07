@@ -33,12 +33,26 @@ fn test_rect_area() {
     assert_eq!(rectangle.rect_area(), 4f32);
 }
 
-fn square(p: Point, width: f32, height: f32) -> Rectangle {
-    let x = p.x + width;
-    let y = p.y + height;
+fn square(p: Point, size: f32) -> Rectangle {
+    let bottom_right = Point {
+        x: p.x + size,
+        y: p.y - size,
+    };
 
     Rectangle {
         top_left: p,
-        bottom_right: Point { x, y },
+        bottom_right,
     }
+}
+
+#[test]
+fn test_square() {
+    let p = Point { x: 0.0, y: 2.0 };
+    let r = square(p, 2.0);
+
+    assert_eq!(r.top_left.x, 0.0);
+    assert_eq!(r.top_left.y, 2.0);
+    assert_eq!(r.bottom_right.x, 2.0);
+    assert_eq!(r.bottom_right.y, 0.0);
+    assert_eq!(r.rect_area(), 4.0);
 }
