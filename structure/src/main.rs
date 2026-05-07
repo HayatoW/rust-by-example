@@ -33,14 +33,14 @@ fn test_rect_area() {
     assert_eq!(rectangle.rect_area(), 4f32);
 }
 
-fn square(p: Point, size: f32) -> Rectangle {
+fn square(top_left: Point, size: f32) -> Rectangle {
     let bottom_right = Point {
-        x: p.x + size,
-        y: p.y - size,
+        x: top_left.x + size,
+        y: top_left.y - size,
     };
 
     Rectangle {
-        top_left: p,
+        top_left,
         bottom_right,
     }
 }
