@@ -14,8 +14,10 @@ struct Rectangle {
 
 impl Rectangle {
     fn rect_area(&self) -> f32 {
-        let Point { x: x1, y: y1 } = self.top_left;
-        let Point { x: x2, y: y2 } = self.bottom_right;
+        let Rectangle {
+            top_left: Point { x: x1, y: y1 },
+            bottom_right: Point { x: x2, y: y2 },
+        } = self;
 
         (x1 - x2).abs() * (y1 - y2).abs()
     }
